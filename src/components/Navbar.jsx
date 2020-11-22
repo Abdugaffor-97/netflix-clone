@@ -1,7 +1,7 @@
 import { Navbar, Nav, FormControl, Dropdown, DropdownButton } from 'react-bootstrap'
 import accountPageIMG from '../images/account-face.png'
 import netflixIMG from '../images/netflix.png'
-const NavBar = () => {
+const NavBar = ({ handleSearchQuery }) => {
   return (
 
 
@@ -10,25 +10,35 @@ const NavBar = () => {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="#features">Features</Nav.Link>
-          <Nav.Link href="#pricing">Pricing</Nav.Link>
-        </Nav>
-        <Nav>
-          <FormControl type="text" placeholder="Search" className="mr-sm-2" id='search' />
-          <DropdownButton
-            menuAlign="right"
-            title={<img src={accountPageIMG} alt="accountPageIMG" className='nav-img' />}
-            id="dropdown-menu-align-right"
-            variant="outline-light"
-          >
-            <Dropdown.Item eventKey="1">Account</Dropdown.Item>
-            <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
-            <Dropdown.Item eventKey="3">Something else here</Dropdown.Item>
-            <Dropdown.Divider />
-            <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
+          <DropdownButton id="dropdown-item-button" title="Browse" className='Navbar-toggle'>
+            <Dropdown.ItemText>Dropdown item text</Dropdown.ItemText>
+            <Dropdown.Item as="button">Action</Dropdown.Item>
+            <Dropdown.Item as="button">Another action</Dropdown.Item>
+            <Dropdown.Item as="button">Something else</Dropdown.Item>
           </DropdownButton>
         </Nav>
+        <Nav>
+          <FormControl
+            type="text"
+            placeholder="Search"
+            className="mr-sm-2"
+            id='search'
+            onChange={(e) => handleSearchQuery(e.target.value)}
+          />
+        </Nav>
       </Navbar.Collapse>
+      <DropdownButton
+        menuAlign="right"
+        title={<img src={accountPageIMG} alt="accountPageIMG" className='nav-img' />}
+        id="dropdown-menu-align-right"
+        variant="outline-light"
+      >
+        <Dropdown.Item eventKey="1">Account</Dropdown.Item>
+        <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
+        <Dropdown.Item eventKey="3">Something else here</Dropdown.Item>
+        <Dropdown.Divider />
+        <Dropdown.Item eventKey="4">Separated link</Dropdown.Item>
+      </DropdownButton>
     </Navbar>
   )
 }

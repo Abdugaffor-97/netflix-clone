@@ -24,10 +24,9 @@ class Sliders extends React.Component {
       const response = await fetch('http://www.omdbapi.com/?apikey=ad2a416a&s=' + this.props.title)
       const result = await response.json()
       const movies = result.Search
-      console.log(movies)
-      const arrOfMovies = this.chunk(movies, 5)
+      const arrOfMovies = this.chunk(movies, 10)
       this.setState({ arrOfMovies: arrOfMovies, fetching: false })
-
+      console.log(this.props.title, 'this.props.title')
 
     } catch (e) {
       console.log(e)
@@ -37,11 +36,10 @@ class Sliders extends React.Component {
 
 
   render() {
-    console.log(this.state.arrOfMovies, 'this.state.movies')
     return (
       <div className="mb-5">
         <div className='text-white'>
-          <h1 className='ml-5'>{this.props.title}</h1>
+          <h1 className='ml-4'>{this.props.title}</h1>
           {
             this.state.loading && (
               <div className="font-bold d-flex justify-content-center">
@@ -54,7 +52,7 @@ class Sliders extends React.Component {
           {this.state.arrOfMovies.map((movies, index) => (
             <Carousel.Item key={index}>
               <div className='imagesContainer'>
-                {movies.map((movie, index) => (
+                {movies.map((movie) => (
                   <img
                     className='image-item'
                     src={movie.Poster}

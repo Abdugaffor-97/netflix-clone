@@ -16,6 +16,16 @@ footer ul li a:hover {
   color: white;
 }
 
+/* ***Navbar** */
+.Navbar-toggle {
+  border: none !important;
+  background-color: none !important;
+}
+
+.Navbar-toggle:hover {
+  border: none;
+}
+
 .App .nav-img {
   height: 40px;
 }
