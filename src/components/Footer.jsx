@@ -8,7 +8,7 @@ const Footer = () => {
       <Container fluid>
         <Row>
           <Col xs={2} sm={2} md={2} lg={2} xl={2}>
-            <a href="#aa"><img id="logo" src={netflixIMG} alt="logo" className='nav-img' s /></a></Col>
+            <a href="/"><img id="logo" src={netflixIMG} alt="logo" className='nav-img' s /></a></Col>
         </Row>
         <Row>
           <Col>

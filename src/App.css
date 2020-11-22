@@ -1,5 +1,5 @@
 .App {
-  text-align: center;
+  text-align: start;
   background-color: #101010;
 }
 
@@ -7,7 +7,6 @@ footer ul li {
   list-style: none;
   font-size: 15px;
 }
-
 
 a {
   color: #969393;
@@ -24,4 +23,49 @@ footer ul li a:hover {
 #dropdown-menu-align-right {
   padding: 0;
   overflow: hidden;
+  border: 0;
+}
+
+/* Carousel */
+.imagesContainer {
+  display: flex;
+}
+
+.image-item {
+  flex: 1 1 0;
+  transition: transform 0.5s;
+}
+
+.imagesContainer:focus-within .image-item,
+.imagesContainer:hover .image-item {
+  transform: translateX(-25%);
+}
+
+.image-item:focus ~ .image-item,
+.image-item:hover ~ .image-item {
+  transform: translateX(25%);
+}
+
+.imagesContainer .image-item:focus,
+.imagesContainer .image-item:hover {
+  transform: scale(1.5);
+  z-index: 1;
+}
+
+.image-item {
+  width: 100px;
+}
+
+h1 {
+  text-transform: capitalize;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  height: 50px;
+  width: 50px;
+  background-color: black;
+  border-radius: 50%;
+  top: 45%;
+  margin: 0 10px;
 }

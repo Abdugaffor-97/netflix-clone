@@ -6,7 +6,7 @@ const NavBar = () => {
 
 
     <Navbar className='px-5' collapseOnSelect expand="lg" variant="dark">
-      <Navbar.Brand href="#home"><img src={netflixIMG} alt="netflixIMG" className='nav-img' /></Navbar.Brand>
+      <Navbar.Brand href="/"><img src={netflixIMG} alt="netflixIMG" className='nav-img' /></Navbar.Brand>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
