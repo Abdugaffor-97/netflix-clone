@@ -32,7 +32,7 @@ const NavBar = ({ handleSearchQuery }) => {
         variant="outline-light"
       >
         <Dropdown.Item href="/account" eventKey="1">Account</Dropdown.Item>
-        <Dropdown.Item eventKey="2">Another action</Dropdown.Item>
+        <Dropdown.Item href="/payment" eventKey="2">Payment</Dropdown.Item>
         <Dropdown.Item eventKey="3">Something else here</Dropdown.Item>
       </DropdownButton>
     </Navbar>

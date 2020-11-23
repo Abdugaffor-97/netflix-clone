@@ -23,6 +23,7 @@ class Sliders extends React.Component {
     try {
       const response = await fetch('http://www.omdbapi.com/?apikey=ad2a416a&s=' + this.props.title)
       const result = await response.json()
+      console.log(result, 'result of movies')
       const movies = result.Search
       const arrOfMovies = this.chunk(movies, 5)
       this.setState({ arrOfMovies: arrOfMovies, fetching: false })
