@@ -7,16 +7,17 @@ const AccountPage = () => {
   return (
     <>
       <Navbar />
-      <div className='accountPage'>
+      <div className='accountPage p-5'>
         <Container >
+          <h1>Account</h1>
           <Row>
             <Col md={4}>
               <h4>MEMBERSHIP & BILLING</h4>
               <Button variant="outline-danger">Cancel Membership</Button>
             </Col>
             <Col md={8}>
-              <Row>
-                <Col md={6}>
+              <Row className='border-bottom p-3'>
+                <Col md={6} >
                   <p>student@strive.shchool</p>
                   <p>Password:********</p>
                   <p>Phone: 333 333 3333 22</p>
@@ -27,7 +28,7 @@ const AccountPage = () => {
                   <p><a href="#u">Change Phone NUmber</a></p>
                 </Col>
               </Row>
-              <Row>
+              <Row className='border-bottom p-3'>
                 <Col>
                   <p>Pay Pal admin@strive.school</p>
                 </Col>
@@ -36,7 +37,7 @@ const AccountPage = () => {
                   <p>Billing details</p>
                 </Col>
               </Row>
-              <Row>
+              <Row className='border-bottom p-3'>
                 <Col>
                 </Col>
                 <Col>
@@ -46,13 +47,14 @@ const AccountPage = () => {
               </Row>
             </Col>
           </Row>
-          <Container id='plan-details'>
-            <Row>
+          <Container >
+            <Row className='border-bottom p-3'>
               <Col>
                 <h5 style={{ display: 'inline' }}>PLAN DETAILS</h5>
               </Col>
               <Col>
-                <p style={{ display: 'inline' }}>Premium <Button variant="outline-info" style={{ display: 'inline' }}>ULTRAHO</Button></p>
+                <p style={{ display: 'inline' }}>Premium
+                <button >ULTRAHO</button></p>
               </Col>
               <Col>
                 <p><a href="#ss">Change plan</a></p>
@@ -60,22 +62,34 @@ const AccountPage = () => {
             </Row>
           </Container>
           <Container>
-            <Row>
+            <Row className='border-bottom p-3'>
               <Col>
                 <h5 style={{ display: 'inline' }}>SETTINGS</h5>
               </Col>
               <Col>
-                <a href="#asdfgh">Parental controls</a>
-                <a href="#asdfgh">Test particpation</a>
-                <a href="#asdfgh">Manage download</a>
-                <a href="#asdfgh">Activate a device</a>
-                <a href="#asdfgh">Recent device streaming activity</a>
-                <a href="#asdfgh">Sighn out all devices</a>
+                <div>
+                  <a href="#asdfgh">Parental controls</a>
+                </div>
+                <div>
+                  <a href="#asdfgh">Test particpation</a>
+                </div>
+                <div>
+                  <a href="#asdfgh">Manage download</a>
+                </div>
+                <div>
+                  <a href="#asdfgh">Activate a device</a>
+                </div>
+                <div>
+                  <a href="#asdfgh">Recent device streaming activity</a>
+                </div>
+                <div>
+                  <a href="#asdfgh">Sign out all devices</a>
+                </div>
               </Col>
             </Row>
           </Container>
           <Container >
-            <Row>
+            <Row className='border-bottom p-3'>
               <Col md={3}>
                 <h5 style={{ display: 'inline' }}>MY PROFILE</h5>
               </Col>
