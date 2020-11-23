@@ -12,7 +12,6 @@ class MainPage extends React.Component {
   }
   updateSearchQuery = (query) => {
     this.setState({ searchQuery: query })
-    console.log(this.state.searchQuery, 'this.state.searchQuery')
   }
 
 
@@ -20,13 +19,13 @@ class MainPage extends React.Component {
     return (
       <>
         <NavBar handleSearchQuery={this.updateSearchQuery} />
-        {this.state.searchQuery.length > 2 ? (
+        {this.state.searchQuery ? (
           <Sliders title={this.state.searchQuery} />
         ) :
           (<>
-            <Sliders title={'all'} />
+            <Sliders title={'house'} />
             <Sliders title={'atlantic'} />
-            <Sliders title={'Europe'} />
+            <Sliders title={'magic'} />
           </>
           )
         }

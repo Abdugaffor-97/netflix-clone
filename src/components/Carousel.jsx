@@ -17,17 +17,13 @@ class Sliders extends React.Component {
     return output;
   }
 
-
-
-  componentDidMount = async () => {
+  fetchMovies = async () => {
     try {
       const response = await fetch('http://www.omdbapi.com/?apikey=ad2a416a&s=' + this.props.title)
       const result = await response.json()
-      console.log(result, 'result of movies')
       const movies = result.Search
-      const arrOfMovies = this.chunk(movies, 5)
+      const arrOfMovies = this.chunk(movies, 10)
       this.setState({ arrOfMovies: arrOfMovies, fetching: false })
-      console.log(this.props.title, 'this.props.title')
 
     } catch (e) {
       console.log(e)
@@ -36,15 +32,28 @@ class Sliders extends React.Component {
   }
 
 
+
+  componentDidMount = () => {
+    this.fetchMovies()
+  }
+
+  componentDidUpdate = (previousProps) => {
+    if (previousProps.title !== this.props.title) {
+
+      this.fetchMovies()
+    }
+  }
+
+
   render() {
     return (
       <div className="mb-5">
         <div className='text-white'>
-          <h1 className='ml-4'>{this.props.title}</h1>
+          <h2 className='ml-5'>{this.props.title}</h2>
           {
-            this.state.loading && (
+            this.state.fetching && (
               <div className="font-bold d-flex justify-content-center">
-                <Spinner animation="border" variant="success" />
+                <Spinner animation="grow" variant="light" />
               </div>
             )
           }
