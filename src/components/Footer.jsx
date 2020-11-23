@@ -8,7 +8,8 @@ const Footer = () => {
       <Container fluid>
         <Row>
           <Col xs={2} sm={2} md={2} lg={2} xl={2}>
-            <a href="/"><img id="logo" src={netflixIMG} alt="logo" className='nav-img'/></a></Col>
+            <a className='ml-4' href="/"><img id="logo" src={netflixIMG} alt="logo" style={{ width: '60px' }} /></a>
+          </Col>
         </Row>
         <Row>
           <Col>
@@ -25,7 +26,7 @@ const Footer = () => {
               <li>
                 <small>
                   <a href="#ffffffff">
-                    Copyright 1997-2019 
+                    Copyright 1997-2019
                     Netflix Inc.0d00fcda2fdf9c0de
                   </a>
                 </small>
