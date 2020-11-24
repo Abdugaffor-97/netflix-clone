@@ -1,6 +1,5 @@
 import { Col, Container, Row } from 'react-bootstrap'
 import Navbar from './Navbar'
-import Footer from './Footer'
 import striveLogo from '../images/strive.png'
 
 const Payment = () => {
@@ -43,7 +42,6 @@ const Payment = () => {
           </Col>
         </Row>
       </Container>
-      <Footer />
     </>
   )
 }

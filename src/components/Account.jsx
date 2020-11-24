@@ -1,5 +1,4 @@
 import Navbar from "./Navbar";
-import Footer from "./Footer";
 import { Container, Col, Row, Button } from 'react-bootstrap'
 
 
@@ -114,7 +113,6 @@ const AccountPage = () => {
           </Container>
         </Container>
       </div>
-      <Footer />
     </>
   )
 }

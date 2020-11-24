@@ -13,8 +13,7 @@ const NavBar = ({ handleSearchQuery }) => {
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
-          <DropdownButton id="dropdown-item-button" title="Browse" className='Navbar-toggle'>
-            <Dropdown.ItemText>Dropdown item text</Dropdown.ItemText>
+          <DropdownButton variant="outline-info" id="dropdown-item-button" title="Browse" className='Navbar-toggle'>
             <Dropdown.Item as="button">Action</Dropdown.Item>
             <Dropdown.Item as="button">Another action</Dropdown.Item>
             <Dropdown.Item as="button">Something else</Dropdown.Item>
@@ -42,7 +41,6 @@ const NavBar = ({ handleSearchQuery }) => {
         <Link to='/payment'>
           <Dropdown.Item eventKey="2">Payment</Dropdown.Item>
         </Link>
-        <Dropdown.Item eventKey="3">Something else here</Dropdown.Item>
       </DropdownButton>
     </Navbar >
   )

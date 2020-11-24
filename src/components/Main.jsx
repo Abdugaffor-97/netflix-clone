@@ -1,5 +1,5 @@
 import NavBar from "./Navbar";
-import Footer from "./Footer";
+// import Footer from "./Footer";
 import Sliders from "./Carousel";
 import React from 'react'
 
@@ -29,7 +29,6 @@ class MainPage extends React.Component {
           </>
           )
         }
-        <Footer />
       </>
     )
   }
