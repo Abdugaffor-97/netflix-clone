@@ -1,6 +1,7 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import netflixIMG from '../images/netflix.png'
+import { Link } from 'react-router-dom'
 
 const Footer = () => {
   return (
@@ -8,7 +9,9 @@ const Footer = () => {
       <Container fluid>
         <Row>
           <Col xs={2} sm={2} md={2} lg={2} xl={2}>
-            <a className='ml-4' href="/"><img id="logo" src={netflixIMG} alt="logo" style={{ width: '60px' }} /></a>
+            <Link to='/'>
+              <img src={netflixIMG} alt="logo" style={{ width: '60px', cursor: 'pointer' }} />
+            </Link>
           </Col>
         </Row>
         <Row>

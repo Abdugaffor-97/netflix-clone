@@ -1,7 +1,6 @@
 import { Carousel, Spinner } from 'react-bootstrap'
 import React from 'react'
 import uniqid from 'uniqid'
-import ModalView from './CommentsList'
 
 
 class Sliders extends React.Component {
@@ -52,7 +51,6 @@ class Sliders extends React.Component {
     return (
       <div className="mb-5">
         <div className='text-white'>
-          <ModalView />
           <h2 className='ml-5'>{this.props.title}</h2>
           {
             this.state.fetching && (
@@ -63,7 +61,7 @@ class Sliders extends React.Component {
           }
         </div>
         <Carousel>
-          {this.state.arrOfMovies.map((movies, index) => (
+          {this.state.arrOfMovies.map((movies) => (
             <Carousel.Item key={uniqid()}>
               <div className='imagesContainer'>
                 {movies.map((movie) => (

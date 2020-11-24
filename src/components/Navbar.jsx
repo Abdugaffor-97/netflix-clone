@@ -1,10 +1,15 @@
 import { Navbar, Nav, FormControl, Dropdown, DropdownButton } from 'react-bootstrap'
 import accountPageIMG from '../images/account-face.png'
 import netflixIMG from '../images/netflix.png'
+import { Link } from 'react-router-dom'
+
+
 const NavBar = ({ handleSearchQuery }) => {
   return (
     <Navbar className='px-5' collapseOnSelect expand="lg" variant="dark">
-      <Navbar.Brand href="/"><img src={netflixIMG} alt="netflixIMG" style={{width:'100px'}} /></Navbar.Brand>
+      <Link to='/'>
+        <Navbar.Brand ><img src={netflixIMG} alt="netflixIMG" style={{ width: '100px' }} /></Navbar.Brand>
+      </Link>
       <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
@@ -31,11 +36,15 @@ const NavBar = ({ handleSearchQuery }) => {
         id="dropdown-menu-align-right"
         variant="outline-light"
       >
-        <Dropdown.Item href="/account" eventKey="1">Account</Dropdown.Item>
-        <Dropdown.Item href="/payment" eventKey="2">Payment</Dropdown.Item>
+        <Link to='/account'>
+          <Dropdown.Item eventKey="1">Account</Dropdown.Item>
+        </Link>
+        <Link to='/payment'>
+          <Dropdown.Item eventKey="2">Payment</Dropdown.Item>
+        </Link>
         <Dropdown.Item eventKey="3">Something else here</Dropdown.Item>
       </DropdownButton>
-    </Navbar>
+    </Navbar >
   )
 }
 
