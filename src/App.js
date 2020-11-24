@@ -1,16 +1,29 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
-import MainPage from "./components/Main";
+import MainSection from "./components/Main";
 import AccountPage from "./components/Account";
 import PaymentPage from "./components/Payment";
 import { Route, BrowserRouter } from "react-router-dom";
 import Footer from "./components/Footer";
+import NavBar from "./components/Navbar";
+import React from "react";
 
 function App() {
+  const [searchQuery, setSearchQuery] = React.useState("");
+
+  const updateSearchQuery = (query) => setSearchQuery(query);
+
   return (
     <div className="App">
       <BrowserRouter>
-        <Route path="/" component={MainPage} exact />
+        <NavBar handleSearchQuery={updateSearchQuery} />
+        <Route
+          path="/"
+          exact
+          render={(props) => (
+            <MainSection searchQuery={searchQuery} {...props} />
+          )}
+        />
         <Route path="/account" component={AccountPage} exact />
         <Route path="/payment" component={PaymentPage} exact />
         <Footer />

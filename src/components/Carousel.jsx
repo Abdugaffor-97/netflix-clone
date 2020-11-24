@@ -45,8 +45,7 @@ class Sliders extends React.Component {
       this.fetchMovies()
     }
   }
-
-
+  
   render() {
     return (
       <div className="mb-5">
