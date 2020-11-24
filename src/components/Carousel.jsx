@@ -1,5 +1,6 @@
 import { Carousel, Spinner } from 'react-bootstrap'
 import React from 'react'
+import uniqid from 'uniqid'
 import ModalView from './CommentsList'
 
 
@@ -7,6 +8,7 @@ class Sliders extends React.Component {
   state = {
     arrOfMovies: [],
     fetching: true,
+    showModal: false,
   }
 
 
@@ -62,19 +64,20 @@ class Sliders extends React.Component {
         </div>
         <Carousel>
           {this.state.arrOfMovies.map((movies, index) => (
-            <Carousel.Item key={index}>
+            <Carousel.Item key={uniqid()}>
               <div className='imagesContainer'>
                 {movies.map((movie) => (
-                  <img
-                    className='image-item'
-                    src={movie.Poster}
-                    alt={movie.title}
-                  />
+                  <a href="#zzzzz" className='image-item'>
+                    <img
+
+                      src={movie.Poster}
+                      alt={movie.title}
+                    />
+                  </a>
                 ))
                 }
               </div>
             </Carousel.Item>
-
           ))}
         </Carousel>
       </div>

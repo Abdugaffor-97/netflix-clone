@@ -1,24 +1,35 @@
 import Modal from "react-bootstrap/Modal";
-import ModalBody from "react-bootstrap/ModalBody";
-import ModalHeader from "react-bootstrap/ModalHeader";
-import ModalFooter from "react-bootstrap/ModalFooter";
-import ModalTitle from "react-bootstrap/ModalTitle";
 import React from 'react'
+import { Button } from "react-bootstrap";
 
 
 const ModalView = () => {
   const [isOpen, setIsOpnen] = React.useState(false);
 
+  const showModal = () => {
+    setIsOpnen(true)
+  }
+
+  const hideModal = () => {
+    setIsOpnen(false)
+  }
+
 
 
   return (
-    <Modal show={true}>
-      <ModalHeader>
-        <ModalTitle>Hi</ModalTitle>
-      </ModalHeader>
-      <ModalBody>asdfasdf</ModalBody>
-      <ModalFooter>This is the footer</ModalFooter>
-    </Modal>
+    <>
+      <Button onClick={showModal}>Display Modal</Button>
+      <Modal show={isOpen} onHide={hideModal}>
+        <Modal.Header>
+          <Modal.Title>Hi</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>The body</Modal.Body>
+        <Modal.Footer>
+          <Button onClick={hideModal}>Cancel</Button>
+          <Button>Save</Button>
+        </Modal.Footer>
+      </Modal>
+    </>
   );
 };
 
