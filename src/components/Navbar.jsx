@@ -35,12 +35,8 @@ const NavBar = ({ handleSearchQuery }) => {
         id="dropdown-menu-align-right"
         variant="outline-light"
       >
-        <Link to='/account'>
-          <Dropdown.Item eventKey="1">Account</Dropdown.Item>
-        </Link>
-        <Link to='/payment'>
-          <Dropdown.Item eventKey="2">Payment</Dropdown.Item>
-        </Link>
+        <Dropdown.Item as={Link} to='/account' eventKey="1">Account</Dropdown.Item>
+        <Dropdown.Item as={Link} to='/payment' eventKey="2">Payment</Dropdown.Item>
       </DropdownButton>
     </Navbar >
   )

@@ -28,10 +28,10 @@ const Payment = () => {
           <div className='border-bottom py-3'>
             <h4>Autoplay Controls</h4>
             <input className="checkbox" type="checkbox" name="vehicle3" value="Boat" />
-            <label for="vehicle3">Autoplay next episode in a series on all devices</label><br /><br />
+            <label htmlFor="vehicle3">Autoplay next episode in a series on all devices</label>
 
-            <input class="checkbox" type="checkbox" name="2" value="Boat" />
-            <label for="2">Autoplay privious while browsing on all</label><br /><br />
+            <input className="checkbox" type="checkbox" name="all" value="Boat" />
+            <label htmlFor="all">Autoplay privious while browsing on all</label>
           </div>
           <div className='border-bottom py-3 text-center'>
             <button className='mx-1'>Save</button><button className='mx-1'>Cancel</button><button className='mx-1'>Delete Profile</button>
