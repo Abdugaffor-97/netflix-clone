@@ -1,4 +1,4 @@
-import { Carousel, Spinner } from 'react-bootstrap'
+import { Carousel, Spinner, Image } from 'react-bootstrap'
 import React from 'react'
 import uniqid from 'uniqid'
 import { withRouter } from 'react-router-dom'
@@ -64,7 +64,7 @@ class Sliders extends React.Component {
             <Carousel.Item key={uniqid()}>
               <div className='imagesContainer'>
                 {movies.map((movie) => (
-                  <img
+                  <Image
                     className='image-item'
                     src={movie.Poster}
                     alt={movie.title}
