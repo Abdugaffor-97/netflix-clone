@@ -37,6 +37,9 @@ class MovieDetails extends React.Component {
                   <p>{this.state.movieInfo.Plot}</p>
                   <Button className='mx-1' variant='light'><i class="fas fa-check"></i>Play</Button>
                   <Button className='mx-1' variant='secondary'>My List</Button>
+                  <div><b>Genres: </b>{this.state.movieInfo.Genre}</div>
+                  <div><b>Actors: </b>{this.state.movieInfo.Actors}</div>
+                  <div><b>Awards: </b>{this.state.movieInfo.Awards}</div>
                 </div>
               </Col>
               <Col>
@@ -47,7 +50,6 @@ class MovieDetails extends React.Component {
               <Spinner animation='grow' />
             )
           }
-
         </Row>
       </Container >
     )
