@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Col, Container, Row, Spinner } from 'react-bootstrap'
+import { Button, Col, Container, Row, Spinner, Image } from 'react-bootstrap'
 
 
 class MovieDetails extends React.Component {
@@ -24,7 +24,7 @@ class MovieDetails extends React.Component {
 
   render() {
     return (
-      < Container className='my-2 text-white' >
+      < Container className='my-2 text-white py-4' >
         <Row>
           {this.state.movieInfo ?
             (<>
@@ -35,7 +35,7 @@ class MovieDetails extends React.Component {
                   <b className='mx-1'>{this.state.movieInfo.Rated}</b>
                   <b className='mx-1'>{this.state.movieInfo.Runtime}</b>
                   <p>{this.state.movieInfo.Plot}</p>
-                  <Button className='mx-1' variant='light'><i class="fas fa-check"></i>Play</Button>
+                  <Button className='mx-1' variant='light'><i className="fas fa-check"></i>Play</Button>
                   <Button className='mx-1' variant='secondary'>My List</Button>
                   <div><b>Genres: </b>{this.state.movieInfo.Genre}</div>
                   <div><b>Actors: </b>{this.state.movieInfo.Actors}</div>
@@ -43,11 +43,11 @@ class MovieDetails extends React.Component {
                 </div>
               </Col>
               <Col>
-                <img src={this.state.movieInfo.Poster} alt={this.state.movieInfo.Title} />
+                <Image src={this.state.movieInfo.Poster} alt={this.state.movieInfo.Title} />
               </Col>
             </>
             ) : (
-              <Spinner animation='grow' />
+              <Spinner className='text-center' animation='grow' />
             )
           }
         </Row>
