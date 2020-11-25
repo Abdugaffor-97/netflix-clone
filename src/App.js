@@ -3,6 +3,7 @@ import "./App.css";
 import MainSection from "./components/Main";
 import AccountPage from "./components/Account";
 import PaymentPage from "./components/Payment";
+import Details from "./components/Details";
 import { Route, BrowserRouter } from "react-router-dom";
 import Footer from "./components/Footer";
 import NavBar from "./components/Navbar";
@@ -20,12 +21,11 @@ function App() {
         <Route
           path="/"
           exact
-          render={(props) => (
-            <MainSection searchQuery={searchQuery} {...props} />
-          )}
+          render={() => <MainSection searchQuery={searchQuery} />}
         />
         <Route path="/account" component={AccountPage} exact />
         <Route path="/payment" component={PaymentPage} exact />
+        <Route path="/details/:id" component={Details} exact />
         <Footer />
       </BrowserRouter>
     </div>

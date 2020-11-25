@@ -47,8 +47,9 @@ footer ul li a:hover {
 .image-item {
   transition: transform 0.5s;
   display: inline-block;
-  width: 10%;
+  width: 20%;
   height: 200px;
+  cursor: pointer;
 }
 
 .image-item img {

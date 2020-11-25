@@ -1,13 +1,13 @@
 import { Carousel, Spinner } from 'react-bootstrap'
 import React from 'react'
 import uniqid from 'uniqid'
+import { withRouter } from 'react-router-dom'
 
 
 class Sliders extends React.Component {
   state = {
     arrOfMovies: [],
     fetching: true,
-    showModal: false,
   }
 
 
@@ -24,7 +24,7 @@ class Sliders extends React.Component {
       const response = await fetch('http://www.omdbapi.com/?apikey=ad2a416a&s=' + this.props.title)
       const result = await response.json()
       const movies = result.Search
-      const arrOfMovies = this.chunk(movies, 10)
+      const arrOfMovies = this.chunk(movies, 5)
       this.setState({ arrOfMovies: arrOfMovies, fetching: false })
 
     } catch (e) {
@@ -45,7 +45,7 @@ class Sliders extends React.Component {
       this.fetchMovies()
     }
   }
-  
+
   render() {
     return (
       <div className="mb-5">
@@ -64,13 +64,12 @@ class Sliders extends React.Component {
             <Carousel.Item key={uniqid()}>
               <div className='imagesContainer'>
                 {movies.map((movie) => (
-                  <a href="#zzzzz" className='image-item'>
-                    <img
-
-                      src={movie.Poster}
-                      alt={movie.title}
-                    />
-                  </a>
+                  <img
+                    className='image-item'
+                    src={movie.Poster}
+                    alt={movie.title}
+                    onClick={() => this.props.history.push('/details/' + movie.imdbID)}
+                  />
                 ))
                 }
               </div>
@@ -86,4 +85,4 @@ class Sliders extends React.Component {
 
 
 
-export default Sliders
+export default withRouter(Sliders)

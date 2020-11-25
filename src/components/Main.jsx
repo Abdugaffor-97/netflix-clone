@@ -2,11 +2,11 @@ import Sliders from "./Carousel";
 import React from 'react'
 
 
-const MainSection = ({ searchQuery }) => {
+const MainSection = (props) => {
   return (
     <>
-      {searchQuery ? (
-        <Sliders title={searchQuery} />
+      {props.searchQuery ? (
+        <Sliders title={props.searchQuery} />
       ) :
         (<>
           <Sliders title={'house'} />
