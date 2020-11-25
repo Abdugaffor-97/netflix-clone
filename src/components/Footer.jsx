@@ -1,82 +1,70 @@
 import React from "react";
-import { Container, Row, Col } from "react-bootstrap";
-import netflixIMG from '../images/netflix.png'
-import { Link } from 'react-router-dom'
+import { Row, Col } from "react-bootstrap";
 
 const Footer = () => {
   return (
-    <footer className="page-footer font-small blue pt-4  text-white">
-      <Container fluid>
-        <Row>
-          <Col>
-            <Link to='/'>
-              <img src={netflixIMG} alt="logo" style={{ width: '60px', cursor: 'pointer' }} />
-            </Link>
-          </Col>
-        </Row>
-        <Row>
-          <Col>
-            <ul>
-              <li>
-                <a href="#fff">Audio and subtitles</a>
-              </li>
-              <li>
-                <a href="#ffffffffff">Media center</a>
-              </li>
-              <li>
-                <a href="#fffffffffff">Service code</a>
-              </li>
-              <li>
-                <small>
-                  <a href="#ffffffff">
-                    Copyright 1997-2019
-                    Netflix Inc.0d00fcda2fdf9c0de
-                  </a>
-                </small>
-              </li>
-            </ul>
-          </Col>
-          <Col>
-            <ul>
-              <li>
-                <a href="#fff">Audio description</a>
-              </li>
-              <li>
-                <a href="#ffffffffff">Investor relations</a>
-              </li>
-              <li>
-                <a href="#fffffffffff">Legacy notices</a>
-              </li>
-            </ul>
-          </Col>
-          <Col>
-            <ul>
-              <li>
-                <a href="#fff">Audio description</a>
-              </li>
-              <li>
-                <a href="#ffffffffff">Investor relations</a>
-              </li>
-              <li>
-                <a href="#fffffffffff">Legacy notices</a>
-              </li>
-            </ul>
-          </Col>
-          <Col>
-            <ul>
-              <li>
-                <a href="#fff">Audio description</a>
-              </li>
-              <li>
-                <a href="#ffffffffff">Investor relations</a>
-              </li>
-              <li>
-                <a href="#fffffffffff">Legacy notices</a>
-              </li>
-            </ul>
-          </Col>
-        </Row>
-      </Container>
+    <footer className="page-footer font-small py-4  text-white ">
+      <Row className='mt-2'>
+        <Col md={{ span: 8, offset: 2 }}>
+          <Row><a href="#xx">Questions? Contact us.</a></Row>
+
+          <Row>
+            <Col>
+              <div>
+                <a href="#ffffffffff">FAQ</a>
+              </div>
+              <div>
+                <a href="#ffffffffff">Investor Relations</a>
+              </div>
+              <div>
+                <a href="#fffffffffff">Privacy</a>
+              </div>
+              <div>
+                <a href="#ffffffff">Speed Test</a>
+              </div>
+            </Col>
+            <Col>
+              <div>
+                <a href="#fff">Help Center</a>
+              </div>
+              <div>
+                <a href="#ffffffffff">Jobs</a>
+              </div>
+              <div>
+                <a href="#fffffffffff">Cookie Preferences</a>
+              </div>
+              <div>
+                <a href="#fffffffffff">Legal Notices</a>
+              </div>
+            </Col>
+            <Col>
+              <div>
+                <a href="#fff">Account</a>
+              </div>
+              <div>
+                <a href="#ffffffffff">Ways to Watch</a>
+              </div>
+              <div>
+                <a href="#fffffffffff">Corporate Information</a>
+              </div>
+              <div>
+                <a href="#fffffffffff">Netfdivx Originals</a>
+              </div>
+            </Col>
+            <Col>
+              <div>
+                <a href="#fff">Media Center</a>
+              </div>
+              <div>
+                <a href="#ffffffffff">Terms of Use</a>
+              </div>
+              <div>
+                <a href="#fffffffffff">Contact Us</a>
+              </div>
+            </Col>
+          </Row>
+        </Col>
+      </Row>
     </footer >
   );
 };

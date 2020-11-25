@@ -3,17 +3,12 @@
   background-color: #101010;
 }
 
-footer ul li {
-  list-style: none;
-  font-size: 15px;
+footer a {
+  color: #808080;
 }
 
-a {
-  color: #969393;
-}
-
-footer ul li a:hover {
-  color: white;
+footer a:hover {
+  color: rgb(179, 177, 177);
 }
 
 /* ***Navbar** */
