@@ -1,13 +1,15 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import React from "react";
+import { Route, BrowserRouter } from "react-router-dom";
+
 import MainSection from "./components/Main";
 import AccountPage from "./components/Account";
 import PaymentPage from "./components/Payment";
 import Details from "./components/Details";
-import { Route, BrowserRouter } from "react-router-dom";
 import Footer from "./components/Footer";
 import NavBar from "./components/Navbar";
-import React from "react";
+import TvShows from "./components/TvShows";
 
 function App() {
   const [searchQuery, setSearchQuery] = React.useState("");
@@ -24,6 +26,7 @@ function App() {
           render={() => <MainSection searchQuery={searchQuery} />}
         />
         <Route path="/account" component={AccountPage} exact />
+        <Route path="/series" component={TvShows} exact />
         <Route path="/payment" component={PaymentPage} exact />
         <Route path="/details/:id" component={Details} exact />
         <Footer />
