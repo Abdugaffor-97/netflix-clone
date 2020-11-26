@@ -4,18 +4,18 @@ import React from 'react'
 
 const MainSection = (props) => {
   return (
-    <>
+    <div className='mt-5'>
       {props.searchQuery ? (
         <Sliders title={props.searchQuery} />
       ) :
         (<>
-          <Sliders title={'house'} />
-          <Sliders title={'atlantic'} />
-          <Sliders title={'magic'} />
+          <Sliders title={'Panda'} />
+          <Sliders title={'titanic'} />
+          <Sliders title={'little prince'} />
         </>
         )
       }
-    </>
+    </div>
   )
 }
 

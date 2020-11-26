@@ -6,7 +6,7 @@ import { Link, withRouter } from 'react-router-dom'
 
 const NavBar = (props) => {
   return (
-    <Navbar className='px-5' collapseOnSelect expand="lg" variant="dark">
+    <Navbar className='px-5' collapseOnSelect expand="md" variant="dark">
       <Link to='/'>
         <Navbar.Brand ><img src={netflixIMG} alt="netflixIMG" style={{ width: '100px' }} /></Navbar.Brand>
       </Link>

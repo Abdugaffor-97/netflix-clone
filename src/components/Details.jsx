@@ -29,7 +29,7 @@ class MovieDetails extends React.Component {
           {this.state.movieInfo ?
             (<>
               <Col>
-                <h1>{this.state.movieInfo.Title}</h1>
+                <h1><b>{this.state.movieInfo.Title}</b></h1>
                 <div>
                   <b className='mx-1'>{this.state.movieInfo.Year}</b>
                   <b className='mx-1'>{this.state.movieInfo.Rated}</b>
