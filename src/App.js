@@ -10,6 +10,7 @@ import Details from "./components/Details";
 import Footer from "./components/Footer";
 import NavBar from "./components/Navbar";
 import TvShows from "./components/TvShows";
+import Registration from "./components/Registration";
 
 function App() {
   const [searchQuery, setSearchQuery] = React.useState("");
@@ -28,6 +29,7 @@ function App() {
         <Route path="/account" component={AccountPage} exact />
         <Route path="/series" component={TvShows} exact />
         <Route path="/payment" component={PaymentPage} exact />
+        <Route path="/register" component={Registration} exact />
         <Route path="/details/:id" component={Details} exact />
         <Footer />
       </BrowserRouter>
