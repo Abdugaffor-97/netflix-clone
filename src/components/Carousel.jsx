@@ -69,20 +69,13 @@ class Sliders extends React.Component {
             <Carousel.Item key={index}>
               <div className='imagesContainer'>
                 {movies.map((movie) => (
-                  <>
-                    {movie.Poster ? (
-                      <Image
-                        key={movie.imdbID}
-                        className='image-item'
-                        src={movie.Poster}
-                        alt={movie.title}
-                        onClick={() => this.props.history.push('/details/' + movie.imdbID)}
-                      />
-                    ) : (
-                        <Spinner animation="grow" variant="light" />
-                      )}
-                  </>
-
+                  <Image
+                    key={movie.imdbID}
+                    className='image-item'
+                    src={movie.Poster}
+                    alt={movie.title}
+                    onClick={() => this.props.history.push('/details/' + movie.imdbID)}
+                  />
                 ))
                 }
               </div>
