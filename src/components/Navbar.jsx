@@ -14,9 +14,14 @@ const NavBar = (props) => {
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
           <Nav.Link
+            className={props.location.pathname === '/' && 'active'}
+            as={Link} to='/'
+          ><b>Home</b>
+          </Nav.Link>
+          <Nav.Link
             className={props.location.pathname === '/series' && 'active'}
             as={Link} to='/series'
-          >Tv Shows
+          ><b>Tv Shows</b>
           </Nav.Link>
         </Nav>
         <Nav>
@@ -36,6 +41,8 @@ const NavBar = (props) => {
         >
           <Dropdown.Item as={Link} to='/account' eventKey="1">Account</Dropdown.Item>
           <Dropdown.Item as={Link} to='/payment' eventKey="2">Payment</Dropdown.Item>
+          <Dropdown.Divider />
+          <Dropdown.Item as={Link} to='/register' eventKey="3">Register</Dropdown.Item>
         </DropdownButton>
       </Navbar.Collapse>
 
