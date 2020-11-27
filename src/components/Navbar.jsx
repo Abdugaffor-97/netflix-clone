@@ -24,15 +24,18 @@ const NavBar = (props) => {
           ><b>Tv Shows</b>
           </Nav.Link>
         </Nav>
-        <Nav>
-          <FormControl
-            type="text"
-            placeholder="Search"
-            className="mr-sm-2"
-            id='search'
-            onChange={(e) => props.handleSearchQuery(e.target.value)}
-          />
-        </Nav>
+        {((props.location.pathname === '/series') || (props.location.pathname === '/')) && (
+          <Nav>
+            <FormControl
+              type="text"
+              placeholder="Search"
+              className="mr-sm-2"
+              id='search'
+              onChange={(e) => props.handleSearchQuery(e.target.value)}
+            />
+          </Nav>
+        )}
+
         <DropdownButton
           menuAlign="right"
           title={<img src={accountPageIMG} alt="accountPageIMG" className='nav-img' />}
