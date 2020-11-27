@@ -1,6 +1,5 @@
 import { Carousel, Spinner, Image } from 'react-bootstrap'
 import React from 'react'
-import uniqid from 'uniqid'
 import { withRouter } from 'react-router-dom'
 
 
@@ -20,8 +19,14 @@ class Sliders extends React.Component {
   }
 
   fetchMovies = async () => {
+    let url = `http://www.omdbapi.com/?apikey=e4c8a5bd&s=${this.props.title}`
+    const currentURL = this.props.match.url
+    if (currentURL === '/series') {
+      url += '&type=series'
+    }
+
     try {
-      const response = await fetch('http://www.omdbapi.com/?apikey=ad2a416a&s=' + this.props.title)
+      const response = await fetch(url)
       const result = await response.json()
       const movies = result.Search
       const arrOfMovies = this.chunk(movies, 5)
@@ -60,11 +65,12 @@ class Sliders extends React.Component {
           }
         </div>
         <Carousel>
-          {this.state.arrOfMovies.map((movies) => (
-            <Carousel.Item key={uniqid()}>
+          {this.state.arrOfMovies.map((movies, index) => (
+            <Carousel.Item key={index}>
               <div className='imagesContainer'>
                 {movies.map((movie) => (
                   <Image
+                    key={movie.imdbID}
                     className='image-item'
                     src={movie.Poster}
                     alt={movie.title}
