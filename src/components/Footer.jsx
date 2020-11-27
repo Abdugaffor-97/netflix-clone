@@ -6,7 +6,13 @@ const Footer = () => {
     <footer className="page-footer font-small py-4  text-white ">
       <Row className='mt-2'>
         <Col md={{ span: 8, offset: 2 }}>
-          <Row><a href="#xx">Questions? Contact us.</a></Row>
+          <Row>
+            <Col>
+              <div>
+                <a href="#xx">Questions? Contact us.</a>
+              </div>
+            </Col>
+          </Row>
 
           <Row>
             <Col>
