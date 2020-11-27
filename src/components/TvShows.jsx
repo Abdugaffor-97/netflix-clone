@@ -1,9 +1,9 @@
-import Slider from './Carousel'
+import Sliders from './Carousel'
 const { Row, Col } = require("react-bootstrap")
 
 
 
-const Shows = () => {
+const Shows = (props) => {
   return (
     <>
       <Row className='text-white ml-4 mt-5'>
@@ -19,10 +19,17 @@ const Shows = () => {
           </p>
         </Col>
       </Row>
-      <Slider title='The Crown' />
-      <Slider title='hundred' />
-      <Slider title='big sky' />
-      <Slider title="Grey's Anatomy" />
+      {props.searchQuery ? (
+        <Sliders title={props.searchQuery} />
+      ) :
+        (<>
+          <Sliders title='The Crown' />
+          <Sliders title='hundred' />
+          <Sliders title='big sky' />
+          <Sliders title="Grey's Anatomy" />
+        </>
+        )
+      }
     </>
   )
 }

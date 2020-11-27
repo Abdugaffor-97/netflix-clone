@@ -26,8 +26,12 @@ function App() {
           exact
           render={() => <MainSection searchQuery={searchQuery} />}
         />
+        <Route
+          path="/series"
+          exact
+          render={() => <TvShows searchQuery={searchQuery} />}
+        />
         <Route path="/account" component={AccountPage} exact />
-        <Route path="/series" component={TvShows} exact />
         <Route path="/payment" component={PaymentPage} exact />
         <Route path="/register" component={Registration} exact />
         <Route path="/details/:id" component={Details} exact />
