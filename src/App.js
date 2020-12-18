@@ -1,21 +1,22 @@
-import "bootstrap/dist/css/bootstrap.min.css";
-import "./App.css";
-import React from "react";
-import { Route, BrowserRouter } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css"
+import "./App.css"
+import React from "react"
+import { Route, BrowserRouter } from "react-router-dom"
 
-import MainSection from "./components/Main";
-import AccountPage from "./components/Account";
-import PaymentPage from "./components/Payment";
-import Details from "./components/Details";
-import Footer from "./components/Footer";
-import NavBar from "./components/Navbar";
-import TvShows from "./components/TvShows";
-import Registration from "./components/Registration";
+import MainSection from "./components/Main"
+import AccountPage from "./components/Account"
+import PaymentPage from "./components/Payment"
+import Details from "./components/Details"
+import Footer from "./components/Footer"
+import NavBar from "./components/Navbar"
+import TvShows from "./components/TvShows"
+import Registration from "./components/Registration"
+import Media from "./components/Medias"
 
 function App() {
-  const [searchQuery, setSearchQuery] = React.useState("");
+  const [searchQuery, setSearchQuery] = React.useState("")
 
-  const updateSearchQuery = (query) => setSearchQuery(query);
+  const updateSearchQuery = (query) => setSearchQuery(query)
 
   return (
     <div className="App">
@@ -31,6 +32,7 @@ function App() {
           exact
           render={() => <TvShows searchQuery={searchQuery} />}
         />
+        <Route path="/media" component={Media} exact />
         <Route path="/account" component={AccountPage} exact />
         <Route path="/payment" component={PaymentPage} exact />
         <Route path="/register" component={Registration} exact />
@@ -38,7 +40,7 @@ function App() {
         <Footer />
       </BrowserRouter>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App
