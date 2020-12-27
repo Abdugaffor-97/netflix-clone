@@ -30,7 +30,7 @@ class Media extends Component {
   render() {
     const { fetching, movies } = this.state
     return (
-      <Container>
+      <Container style={{ minHeight: "80vh" }}>
         <Row xs={2} sm={2} md={3} lg={4} xl={5}>
           {fetching ? (
             <Col>
