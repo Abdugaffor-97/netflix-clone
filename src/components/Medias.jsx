@@ -37,21 +37,19 @@ class Media extends Component {
     const { fetching, movies, error } = this.state;
     return (
       <Container style={{ minHeight: "80vh" }}>
+        {error && (
+          <Alert variant="danger">
+            Someting went wrong. Try to reload the page{console.log("alert")}
+          </Alert>
+        )}
         <Row xs={2} sm={2} md={3} lg={4} xl={5}>
           {fetching && (
             <Col>
               <Spinner animation="grow" variant="light" />
             </Col>
           )}
-          {error && (
-            <Alert variant="danger">
-              Someting went wrong. Try to reload the page{console.log("alert")}
-            </Alert>
-          )}
-
           {movies.Response === "True" &&
             movies.Search.map((movie) => (
-              // <Col key={movie.imdbID}>
               <Image
                 key={movie.imdbID}
                 className="image-item"
