@@ -12,36 +12,78 @@ import {
   Form,
 } from "react-bootstrap";
 
+import Moment from "react-moment";
+
 class MovieDetails extends React.Component {
-  state = {
-    movieInfo: null,
-    comments: [],
-    fetchingComments: true,
-    fetching: true,
-    error: false,
-    errorComments: false,
-    starValue: 0,
+  constructor(props) {
+    super(props);
+    this.state = {
+      movieInfo: null,
+      comments: [],
+      fetchingComments: true,
+      fetching: true,
+      error: false,
+      errorComments: false,
+      starValue: 0,
+    };
+    this.movieId = this.props.match.params.id;
+    this.BE_URL = process.env.REACT_APP_BE_URL;
+  }
+
+  fetchData = async (url) => {
+    try {
+      const response = await fetch(url);
+      const data = await response.json();
+      return { data, fetching: false, error: false };
+    } catch (e) {
+      console.log(e);
+      return { data: null, fetching: false, error: true };
+    }
   };
 
   componentDidMount = async () => {
-    const movieId = this.props.match.params.id;
-    try {
-      const response = await fetch(
-        process.env.REACT_APP_BE_URL + "/media/" + movieId
-      );
-      console.log(process.env.REACT_APP_BE_URL + "/media/" + movieId);
-      const movieInfo = await response.json();
+    const url = this.BE_URL + "/media/" + this.movieId;
+    const status = await this.fetchData(url);
+    if (status.data) {
+      this.setState({
+        movieInfo: status.data,
+        fetching: status.fetching,
+        error: status.error,
+      });
+    } else {
+      this.setState({
+        movieInfo: status.data,
+        fetching: status.fetching,
+        error: status.error,
+      });
+    }
+  };
 
-      this.setState({ movieInfo: movieInfo, fetching: false, error: false });
-    } catch (e) {
-      console.log(e);
-      this.setState({ fetching: false, error: true });
+  componentDidUpdate = async (prevProps, prevState) => {
+    if (prevState.movieInfo !== this.state.movieInfo) {
+      const status = await this.fetchData(
+        this.BE_URL + `/reviews?movieId=${this.movieId}`
+      );
+      console.log(status);
+      if (status.data) {
+        this.setState({
+          comments: status.data,
+          fetchingComments: status.fetching,
+          errorComments: status.error,
+        });
+      } else {
+        this.setState({
+          comments: status.data,
+          fetchingComments: status.fetching,
+          errorComments: status.error,
+        });
+      }
     }
   };
 
   render() {
     const {
-      // comments,
+      comments,
       error,
       fetching,
       fetchingComments,
@@ -96,7 +138,7 @@ class MovieDetails extends React.Component {
           )}
           {fetching && <Spinner className="text-center" animation="grow" />}
         </Row>
-        <Row className="mt-5">
+        <Row className="mt-5 pt-5 bg-dark rounded">
           <Col>
             <Form>
               <Form.Group>
@@ -124,12 +166,12 @@ class MovieDetails extends React.Component {
                       required
                       size="sm"
                       type="text"
-                      placeholder="Your Name"
+                      placeholder="Comment"
                     />
                   </Col>
                 </Form.Row>
                 <br />
-                <Form.Row style={{ backgroundColor: "green" }}>
+                <Form.Row>
                   <Form.Label column="sm" lg={2}>
                     Rate:
                   </Form.Label>
@@ -138,7 +180,8 @@ class MovieDetails extends React.Component {
                     onChange={(starValue) => this.setState({ starValue })}
                   />
                 </Form.Row>
-                <Button variant="primary" type="submit">
+                <br />
+                <Button variant="outline-warning" type="submit">
                   Submit
                 </Button>
               </Form.Group>
@@ -146,6 +189,29 @@ class MovieDetails extends React.Component {
           </Col>
           <Col>
             <h4>Comments:</h4>
+            {comments.length ? (
+              comments.map((comment) => (
+                <div key={comment._id}>
+                  <p>{comment.comment}</p>
+                  <div className="d-flex justify-content-between align-items-center">
+                    <small className="d-flex align-items-center">
+                      <b className="mr-1">Rate:</b>
+                      <BeautyStars
+                        value={comment.rate}
+                        size={12}
+                        editable={false}
+                        gap="10px"
+                      />
+                    </small>
+                    <small>
+                      <Moment format="YYYY/MM/DD" date={comment.createdAt} />
+                    </small>
+                  </div>
+                </div>
+              ))
+            ) : (
+              <p>There is no comments</p>
+            )}
             {errorComments && (
               <Alert variant="danger">
                 Something went wrong. Try to refresh the page
@@ -154,7 +220,6 @@ class MovieDetails extends React.Component {
             {fetchingComments && (
               <Spinner className="text-center" animation="border" />
             )}
-            {/* {comments.length&&} */}
           </Col>
         </Row>
       </Container>
