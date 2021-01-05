@@ -1,31 +1,47 @@
-import React from "react"
-import { Button, Col, Container, Row, Spinner, Image } from "react-bootstrap"
+import React from "react";
+import {
+  Button,
+  Col,
+  Container,
+  Row,
+  Spinner,
+  Image,
+  Alert,
+} from "react-bootstrap";
 
 class MovieDetails extends React.Component {
   state = {
     movieInfo: null,
     fetching: true,
-  }
+    error: false,
+  };
 
   componentDidMount = async () => {
-    const movieId = this.props.match.params.id
+    const movieId = this.props.match.params.id;
     try {
       const response = await fetch(
-        "http://www.omdbapi.com/?apikey=ad2a416a&i=" + movieId
-      )
-      const movieInfo = await response.json()
-      this.setState({ movieInfo: movieInfo, fetching: false })
+        process.env.REACT_APP_BE_URL + "/media/" + movieId
+      );
+      console.log(process.env.REACT_APP_BE_URL + "/media/" + movieId);
+      const movieInfo = await response.json();
+
+      this.setState({ movieInfo: movieInfo, fetching: false, error: false });
     } catch (e) {
-      console.log(e)
-      this.setState({ fetching: false })
+      console.log(e);
+      this.setState({ fetching: false, error: true });
     }
-  }
+  };
 
   render() {
     return (
       <Container className="my-2 text-white py-4" style={{ minHeight: "80vh" }}>
+        {this.state.error && (
+          <Alert variant="danger">
+            Something went wrong. Try to refresh the page
+          </Alert>
+        )}
         <Row>
-          {this.state.movieInfo ? (
+          {this.state.movieInfo && (
             <>
               <Col>
                 <h1>
@@ -63,13 +79,14 @@ class MovieDetails extends React.Component {
                 />
               </Col>
             </>
-          ) : (
+          )}
+          {this.state.fetching && (
             <Spinner className="text-center" animation="grow" />
           )}
         </Row>
       </Container>
-    )
+    );
   }
 }
 
-export default MovieDetails
+export default MovieDetails;
