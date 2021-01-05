@@ -1,7 +1,8 @@
-import React from "react";
 import BeautyStars from "beauty-stars";
+import Moment from "react-moment";
 
-import {
+const React = require("react");
+const {
   Button,
   Col,
   Container,
@@ -10,9 +11,7 @@ import {
   Image,
   Alert,
   Form,
-} from "react-bootstrap";
-
-import Moment from "react-moment";
+} = require("react-bootstrap");
 
 class MovieDetails extends React.Component {
   constructor(props) {
@@ -24,11 +23,55 @@ class MovieDetails extends React.Component {
       fetching: true,
       error: false,
       errorComments: false,
-      starValue: 0,
+      form: { starValue: 0, comment: "", name: "" },
+      sendingComment: false,
+      errorSendingComment: null,
     };
     this.movieId = this.props.match.params.id;
     this.BE_URL = process.env.REACT_APP_BE_URL;
   }
+
+  submitForm = async (e) => {
+    e.preventDefault();
+    this.setState({ sendingComment: true });
+    try {
+      const response = await fetch(
+        this.BE_URL + `/reviews?movieId=${this.movieId}`,
+        {
+          method: "POST",
+          body: JSON.stringify(this.state.form),
+          headers: new Headers({
+            "Content-Type": "application/json",
+          }),
+        }
+      );
+
+      if (response.ok) {
+        this.setState({
+          sendingComment: false,
+          form: {
+            starValue: 0,
+            comment: "",
+            name: "",
+          },
+        });
+      }
+    } catch (error) {
+      this.setState({ sendingComment: false, errorSendingComment: true });
+    }
+  };
+
+  updateForm = (e) => {
+    const form = { ...this.state.form };
+    if (e.currentTarget) {
+      const currentId = e.currentTarget.id;
+      form[currentId] = e.currentTarget.value;
+    } else {
+      form.starValue = e;
+    }
+    this.setState({ form });
+    console.log(form);
+  };
 
   fetchData = async (url) => {
     try {
@@ -64,7 +107,6 @@ class MovieDetails extends React.Component {
       const status = await this.fetchData(
         this.BE_URL + `/reviews?movieId=${this.movieId}`
       );
-      console.log(status);
       if (status.data) {
         this.setState({
           comments: status.data,
@@ -89,7 +131,7 @@ class MovieDetails extends React.Component {
       fetchingComments,
       movieInfo,
       errorComments,
-      starValue,
+      form,
     } = this.state;
 
     return (
@@ -140,7 +182,7 @@ class MovieDetails extends React.Component {
         </Row>
         <Row className="mt-5 pt-5 bg-dark rounded">
           <Col>
-            <Form>
+            <Form onSubmit={this.submitForm}>
               <Form.Group>
                 <Form.Row>
                   <Form.Label column="sm" lg={2}>
@@ -152,6 +194,9 @@ class MovieDetails extends React.Component {
                       size="sm"
                       type="text"
                       placeholder="Your Name"
+                      id="name"
+                      onChange={this.updateForm}
+                      value={form.name}
                     />
                   </Col>
                 </Form.Row>
@@ -167,6 +212,9 @@ class MovieDetails extends React.Component {
                       size="sm"
                       type="text"
                       placeholder="Comment"
+                      id="comment"
+                      onChange={this.updateForm}
+                      value={form.comment}
                     />
                   </Col>
                 </Form.Row>
@@ -176,8 +224,9 @@ class MovieDetails extends React.Component {
                     Rate:
                   </Form.Label>
                   <BeautyStars
-                    value={starValue}
-                    onChange={(starValue) => this.setState({ starValue })}
+                    value={form.starValue}
+                    onChange={this.updateForm}
+                    id="starValue"
                   />
                 </Form.Row>
                 <br />
@@ -200,7 +249,7 @@ class MovieDetails extends React.Component {
                         value={comment.rate}
                         size={12}
                         editable={false}
-                        gap="10px"
+                        gap="5px"
                       />
                     </small>
                     <small>
