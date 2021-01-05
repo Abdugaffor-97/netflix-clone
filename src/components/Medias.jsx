@@ -20,7 +20,7 @@ class Media extends Component {
     const url = process.env.REACT_APP_BE_URL;
     console.log("process.env.REACT_APP_BE_URL", url);
     axios
-      .get("http://localhost:3001/media")
+      .get("http://localhost:3001/media?title=ali")
       .then((response) =>
         this.setState({ movies: response.data, fetching: false })
       )
