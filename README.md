@@ -1,3 +1,5 @@
 # React Netflix clone
 
-<a href='https://react-netflix-clone-strive.herokuapp.com/' target='_blank'>SEE LIVE</a>
+[SEE LIVE]('https://react-netflix-clone-strive.herokuapp.com')
+[Backend]('https://github.com/Abdugaffor-97/netflix-clone-backend')
+
