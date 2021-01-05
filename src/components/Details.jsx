@@ -55,6 +55,7 @@ class MovieDetails extends React.Component {
             name: "",
           },
         });
+        this.fetchComments();
       }
     } catch (error) {
       this.setState({ sendingComment: false, errorSendingComment: true });
@@ -84,6 +85,25 @@ class MovieDetails extends React.Component {
     }
   };
 
+  fetchComments = async () => {
+    const status = await this.fetchData(
+      this.BE_URL + `/reviews?movieId=${this.movieId}`
+    );
+    if (status.data) {
+      this.setState({
+        comments: status.data,
+        fetchingComments: status.fetching,
+        errorComments: status.error,
+      });
+    } else {
+      this.setState({
+        comments: status.data,
+        fetchingComments: status.fetching,
+        errorComments: status.error,
+      });
+    }
+  };
+
   componentDidMount = async () => {
     const url = this.BE_URL + "/media/" + this.movieId;
     const status = await this.fetchData(url);
@@ -104,22 +124,7 @@ class MovieDetails extends React.Component {
 
   componentDidUpdate = async (prevProps, prevState) => {
     if (prevState.movieInfo !== this.state.movieInfo) {
-      const status = await this.fetchData(
-        this.BE_URL + `/reviews?movieId=${this.movieId}`
-      );
-      if (status.data) {
-        this.setState({
-          comments: status.data,
-          fetchingComments: status.fetching,
-          errorComments: status.error,
-        });
-      } else {
-        this.setState({
-          comments: status.data,
-          fetchingComments: status.fetching,
-          errorComments: status.error,
-        });
-      }
+      this.fetchComments();
     }
   };
 
@@ -180,7 +185,7 @@ class MovieDetails extends React.Component {
           )}
           {fetching && <Spinner className="text-center" animation="grow" />}
         </Row>
-        <Row className="mt-5 pt-5 bg-dark rounded">
+        <Row className="mt-5 py-5 bg-dark rounded">
           <Col>
             <Form onSubmit={this.submitForm}>
               <Form.Group>
@@ -242,11 +247,11 @@ class MovieDetails extends React.Component {
               comments.map((comment) => (
                 <div key={comment._id}>
                   <p>{comment.comment}</p>
-                  <div className="d-flex justify-content-between align-items-center">
+                  <div className="my-3 pb-1 border-bottom d-flex justify-content-between align-items-center">
                     <small className="d-flex align-items-center">
                       <b className="mr-1">Rate:</b>
                       <BeautyStars
-                        value={comment.rate}
+                        value={comment.starValue}
                         size={12}
                         editable={false}
                         gap="5px"
