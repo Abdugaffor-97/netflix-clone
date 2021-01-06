@@ -17,6 +17,7 @@ class Media extends Component {
   };
 
   fetchMovies = () => {
+    const url = process.env.REACT_APP_BE_URL;
     axios
       .get(`${url}/media?title=ali`)
       .then((response) =>
